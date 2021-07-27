@@ -1,4 +1,4 @@
-import Student from "./Student";
+import Student from "../Student";
 
 import React from 'react';
 import { render, screen } from "@testing-library/react";
