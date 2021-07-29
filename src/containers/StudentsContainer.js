@@ -1,6 +1,7 @@
 import React from 'react';
 import { api } from '../utils';
 import Student from '../components/Student';
+import Form from '../components/Form';
 
 class StudentsContainer extends React.Component {
   constructor(props) {
@@ -65,22 +66,7 @@ class StudentsContainer extends React.Component {
 
     return (
       <div className="student-profiles-wrapper">
-        <form>
-          <input 
-            className="search-bar" 
-            placeholder="Search by name"
-            name="student-name" 
-            onChange={this.handleChange}
-          />
-          <br/>
-          <hr style={{margin: "0 0 10px", borderTop: "1px solid #c9c7c7"}}/>
-          <input 
-            className="search-bar" 
-            placeholder="Search by tag"
-            name="tag" 
-            onChange={this.handleChange}
-        />
-        </form>
+        <Form handleChange={this.handleChange}/>
         <hr style={{margin: "0 0 10px", borderTop: "2px solid black"}} />
         <ul>
           {studentList && studentList.map(student => {
@@ -91,7 +77,6 @@ class StudentsContainer extends React.Component {
             />
           })}
         </ul>
-       
       </div>
     );
   }
