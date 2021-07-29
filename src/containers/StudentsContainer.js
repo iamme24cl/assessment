@@ -1,5 +1,5 @@
 import React from 'react';
-import { api } from '../utils';
+import {getStudentProfiles} from '../utils';
 import Student from '../components/Student';
 import Form from '../components/Form';
 
@@ -37,7 +37,7 @@ class StudentsContainer extends React.Component {
   }
 
   componentDidMount() {
-    api.getStudentProfiles()
+    getStudentProfiles()
     .then(profiles => this.setState({ students: profiles }))
     .catch(() => {
       this.setState({ hasErrorFetching: true })
@@ -70,11 +70,13 @@ class StudentsContainer extends React.Component {
         <hr style={{margin: "0 0 10px", borderTop: "2px solid black"}} />
         <ul>
           {studentList && studentList.map(student => {
-            return <Student 
+            return (
+              <Student 
               key={student.id} 
               student={student} 
               addProfileTag={this.addProfileTag}
-            />
+              />
+            );
           })}
         </ul>
       </div>

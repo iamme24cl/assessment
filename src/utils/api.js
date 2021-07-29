@@ -20,7 +20,6 @@ const getStudentProfiles = async () => {
   return profiles;
 }
 
-const getData = {getStudentProfiles}
 
-export default getData;
+export default getStudentProfiles;
 

@@ -1,3 +1,3 @@
-import api from './api';
+import getStudentProfiles from './api';
 
-export { api }
+export {getStudentProfiles}

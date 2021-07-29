@@ -1,4 +1,7 @@
 import Student from "../Student";
+import {getStudentProfiles} from "../../utils/api"
+import getData from "../../utils/__mocks__/api.js";
+jest.mock("../../utils/__mocks__/api");
 
 import React from 'react';
 import { render, screen } from "@testing-library/react";
@@ -45,3 +48,23 @@ test('Should display student profile information', () => {
   expect(average).toBeInTheDocument();
 
 })
+
+test("get the full recipe for a dish", async () => {
+  // arrange  
+  const dish = "Pesto";
+  const expectedValue = { "Magical Deliciousness": "3 cups" };
+ 
+  // set the resolved value for the next call to apiRequest  
+  const mockResponse = {
+    status: "mock",
+    data: { "Magical Deliciousness": "3 cups" }
+  }
+  getData.mockResolvedValueOnce(mockResponse);
+ 
+  // act  
+  const actualRecipe = await getStudentProfiles(dish);
+ 
+  // assertion
+  expect(actualRecipe).toEqual(expectedValue);
+});
+
