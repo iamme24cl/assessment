@@ -1,7 +1,8 @@
 import Student from "../Student";
+import TagInput from "../TagInput";
 
 import React from 'react';
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
@@ -46,12 +47,15 @@ test('Should display student profile information', () => {
 
 })
 
-test('Should have a button element', () => {
+test('Should have button and tagInput elements', () => {
   render(
     <Student student={{}} addProfileTag={(() => {})}/>
   );
   const button = screen.getByRole('button');
-  expect(button).toBeInTheDocument()
+  const input = screen.getByRole('textbox');
+  
+  expect(button).toBeInTheDocument();
+  expect(input).toBeInTheDocument();
 })
 
 test('Clicking the button should toggle displaying student grades', async () => {
@@ -78,3 +82,30 @@ test('Clicking the button should toggle displaying student grades', async () => 
   expect(grade).toBeNull();
 })
 
+test('Typing in the input field changes its value', () => {
+  const student = {tags: []};
+  render(
+    <Student student={student} addProfileTag={(() => {})}/>
+  );
+
+  const expectedValue = "New Tag"
+  const input = screen.getByRole('textbox');
+  userEvent.type(input, "New Tag");
+
+  expect(input.value).toEqual(expectedValue);  
+})
+
+// test('Clicking Enter in the tagInput field calls the onKeyDown function', () => {
+//   const student = {tags: []};
+//   const callback = jest.fn();
+//   render(
+//     <Student student={student} addProfileTag={(() => {})}>
+//       <TagInput onKeyDown={callback} />
+//     </Student>
+//   );
+//   const input = screen.getByRole('textbox');
+//   userEvent.type(input, "New tag")
+//   fireEvent.keyDown(input, {key: "Enter", code: "Enter"})
+  
+//   expect(callback).toHaveBeenCalled();
+// })
