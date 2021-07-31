@@ -54,7 +54,7 @@ test('Should have a button element', () => {
   expect(button).toBeInTheDocument()
 })
 
-test('Clicking the button should toggle display student grades', async () => {
+test('Clicking the button should toggle displaying student grades', async () => {
   render(
     <Student student={{grades: ["71", "100", "90"]}} addProfileTag={(() => {})}/>
   );
