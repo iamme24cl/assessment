@@ -8,6 +8,7 @@ class Student extends React.Component {
     this.state = {
       displayGrades: false
     }
+    this.toggleGrades = this.toggleGrades.bind(this);
   }
 
   toggleGrades() {

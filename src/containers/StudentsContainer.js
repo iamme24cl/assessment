@@ -72,9 +72,9 @@ class StudentsContainer extends React.Component {
           {studentList && studentList.map(student => {
             return (
               <Student 
-              key={student.id} 
-              student={student} 
-              addProfileTag={this.addProfileTag}
+                key={student.id} 
+                student={student} 
+                addProfileTag={this.addProfileTag}
               />
             );
           })}
