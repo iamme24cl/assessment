@@ -1,5 +1,6 @@
 import React from 'react';
 import TagInput from './TagInput';
+import Button from './Button';
 
 class Student extends React.Component {
   constructor(props) {
@@ -20,12 +21,7 @@ class Student extends React.Component {
           <img className="student-img" src={this.props.student.pic} alt="student-avatar" />
           <div>
             <h2>{this.props.student.firstName} {this.props.student.lastName}</h2>
-            <button className="add-btn" onClick={() => this.toggleGrades()}>
-              {this.state.displayGrades 
-                ? <i className="fa fa-minus"></i>
-                : <i className="fa fa-plus"></i>
-              }
-            </button>
+            <Button displayGrades={this.state.displayGrades} onClick={() => this.toggleGrades()} />
             <ul className="student-info">
               <li>Email: {this.props.student.email}</li>
               <li>Company: {this.props.student.company}</li>

@@ -49,6 +49,7 @@ input.search-bar {
   border: none;
   padding: 10px;
   outline:none !important;
+  width: 100%;
 }
 
 .flex-container {

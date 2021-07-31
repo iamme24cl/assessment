@@ -1,7 +1,5 @@
 import Student from "../Student";
 import {getStudentProfiles} from "../../utils/api"
-import getData from "../../utils/__mocks__/api.js";
-jest.mock("../../utils/__mocks__/api");
 
 import React from 'react';
 import { render, screen } from "@testing-library/react";
@@ -49,22 +47,35 @@ test('Should display student profile information', () => {
 
 })
 
-test("get the full recipe for a dish", async () => {
-  // arrange  
-  const dish = "Pesto";
-  const expectedValue = { "Magical Deliciousness": "3 cups" };
- 
-  // set the resolved value for the next call to apiRequest  
-  const mockResponse = {
-    status: "mock",
-    data: { "Magical Deliciousness": "3 cups" }
-  }
-  getData.mockResolvedValueOnce(mockResponse);
- 
-  // act  
-  const actualRecipe = await getStudentProfiles(dish);
- 
-  // assertion
-  expect(actualRecipe).toEqual(expectedValue);
-});
+test('Should have a button element', () => {
+  render(
+    <Student student={{}} addProfileTag={(() => {})}/>
+  );
+  const button = screen.getByRole('button');
+  expect(button).toBeInTheDocument()
+})
+
+test('Clicking the button should toggle display student grades', async () => {
+  render(
+    <Student student={{grades: ["71", "100", "90"]}} addProfileTag={(() => {})}/>
+  );
+  let grade = screen.queryByText("Test 2: 100")
+  expect(grade).toBeNull();
+
+  const button = screen.getByRole('button');
+  userEvent.click(button);
+
+  let test = await screen.findByText("Test 2:")
+  grade = await screen.findByText("100");
+
+  expect(test).toBeInTheDocument();
+  expect(grade).toBeInTheDocument();
+
+  userEvent.click(button);
+  test = screen.queryByText("Test 2:")
+  grade = screen.queryByText("100");
+
+  expect(test).toBeNull();
+  expect(grade).toBeNull();
+})
 
