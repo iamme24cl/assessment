@@ -94,18 +94,3 @@ test('Typing in the input field changes its value', () => {
 
   expect(input.value).toEqual(expectedValue);  
 })
-
-// test('Clicking Enter in the tagInput field calls the onKeyDown function', () => {
-//   const student = {tags: []};
-//   const callback = jest.fn();
-//   render(
-//     <Student student={student} addProfileTag={(() => {})}>
-//       <TagInput onKeyDown={callback} />
-//     </Student>
-//   );
-//   const input = screen.getByRole('textbox');
-//   userEvent.type(input, "New tag")
-//   fireEvent.keyDown(input, {key: "Enter", code: "Enter"})
-  
-//   expect(callback).toHaveBeenCalled();
-// })
