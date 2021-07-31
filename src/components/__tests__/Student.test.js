@@ -1,5 +1,4 @@
 import Student from "../Student";
-import {getStudentProfiles} from "../../utils/api"
 
 import React from 'react';
 import { render, screen } from "@testing-library/react";
