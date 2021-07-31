@@ -65,8 +65,8 @@ test('Clicking the button should toggle displaying student grades', async () => 
   let grade = screen.queryByText("Test 2: 100")
   expect(grade).toBeNull();
 
-  const button = screen.getByRole('button');
-  userEvent.click(button);
+  const toggleButton = screen.getByRole('button');
+  userEvent.click(toggleButton);
 
   let test = await screen.findByText("Test 2:")
   grade = await screen.findByText("100");
@@ -74,7 +74,7 @@ test('Clicking the button should toggle displaying student grades', async () => 
   expect(test).toBeInTheDocument();
   expect(grade).toBeInTheDocument();
 
-  userEvent.click(button);
+  userEvent.click(toggleButton);
   test = screen.queryByText("Test 2:")
   grade = screen.queryByText("100");
 
