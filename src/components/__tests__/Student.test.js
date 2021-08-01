@@ -61,27 +61,26 @@ test('Clicking the button should toggle displaying student grades', async () => 
   render(
     <Student student={{grades: ["71", "100", "90"]}} addProfileTag={(() => {})}/>
   );
-  let grade = screen.queryByText("Test 2: 100")
+  let test = screen.queryByText("Test 2:")
+  let grade = screen.queryByText("100")
+  expect(test).toBeNull();
   expect(grade).toBeNull();
 
   const toggleButton = screen.getByRole('button');
   userEvent.click(toggleButton);
-
-  let test = await screen.findByText("Test 2:")
+  test = await screen.findByText("Test 2:")
   grade = await screen.findByText("100");
-
   expect(test).toBeInTheDocument();
   expect(grade).toBeInTheDocument();
 
   userEvent.click(toggleButton);
   test = screen.queryByText("Test 2:")
   grade = screen.queryByText("100");
-
   expect(test).toBeNull();
   expect(grade).toBeNull();
 })
 
-test('Typing in the input field changes its value', () => {
+test('Typing in the input tag field changes its value', () => {
   const student = {tags: []};
   render(
     <Student student={student} addProfileTag={(() => {})}/>
