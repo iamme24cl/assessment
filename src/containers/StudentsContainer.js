@@ -58,8 +58,7 @@ class StudentsContainer extends React.Component {
     ? this.state.students
     : this.state.students.filter(student => {
       return (
-        student.firstName.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
-        student.lastName.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
+        `${student.firstName} ${student.lastName}`.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
         student.tagString.toLowerCase().includes(this.state.searchTerm.toLowerCase())
       );
     });
