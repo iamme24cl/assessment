@@ -64,20 +64,22 @@ class StudentsContainer extends React.Component {
     });
 
     return (
-      <div className="student-profiles-wrapper">
-        <Form handleChange={this.handleChange}/>
-        <hr style={{margin: "0 0 10px", borderTop: "2px solid black"}} />
-        <ul>
-          {studentList && studentList.map(student => {
-            return (
-              <Student 
-                key={student.id} 
-                student={student} 
-                addProfileTag={this.addProfileTag}
-              />
-            );
-          })}
-        </ul>
+      <div className="main-container">
+        <div className="student-profiles-wrapper">
+          <Form handleChange={this.handleChange}/>
+          <hr style={{margin: "0 0 10px", borderTop: "2px solid black"}} />
+          <ul>
+            {studentList && studentList.map(student => {
+              return (
+                <Student 
+                  key={student.id} 
+                  student={student} 
+                  addProfileTag={this.addProfileTag}
+                />
+              );
+            })}
+          </ul>
+        </div>
       </div>
     );
   }

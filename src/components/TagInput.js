@@ -25,7 +25,7 @@ class TagInput extends React.Component {
   render () {
     return (
       <div>
-        <div>
+        <div className="tags">
           { this.props.tags && 
             this.props.tags.map((tag) => (
               <span className="tag">{tag}</span>

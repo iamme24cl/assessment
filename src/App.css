@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap');
 
-* {
+html {
   list-style: none;
   margin: 0;
   padding: 0;
+  line-height:1.5;
+  min-height:100vh;
+  min-width:300px;
 }
 
 body {
@@ -15,12 +18,20 @@ body {
   margin-top: 25px;
 }
 
+.main-container {
+  height:100%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
 .student-profiles-wrapper {
   background: #fff;
   -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
   box-shadow: 0 0 10px rgba(0,0,0,.3);
-  margin: 80px auto 0;
+  margin: 50px auto 50px;
   width: 650px;
   height: 650px;
   padding: 5px;
@@ -57,6 +68,7 @@ input.search-bar {
   margin: 0 10px;
   padding: 0;
   position: relative;
+  height: auto;
 }
 
 .student-img {
@@ -72,7 +84,7 @@ input.search-bar {
 }
 
 .line {
-  margin: 0 -20px 20px;
+  margin: 0 -40px 20px;
   border: 0;
   border-top: 1px solid #c9c7c7; 
 }
@@ -92,6 +104,12 @@ input.search-bar {
   top: 10px;
 }
 
+.tags {
+  width: 350px;
+  height: auto;
+  overflow: wrap;
+}
+
 .tag {
   background-color: #c9c7c7;
   padding: 8px;
@@ -108,3 +126,45 @@ input.search-bar {
   border-right: none;
   border-bottom: 1px solid #c9c7c7;
 }
+
+@media only screen and (max-width: 600px) {
+  .student-profiles-wrapper {
+    width: 95%;
+    height: 550px;
+  }
+  .student-img {
+    width: 65px;
+    height: 80px;
+  }
+  .flex-container {
+    margin: 0;
+  }
+  .student-name {
+    font-size: 6vw;
+  }
+  div.student-profiles-wrapper ul {
+    padding: 0;
+  }
+  body {
+    font-size: 3vw;
+  }
+  h2 {
+    font-size: 5vw;
+  }
+  .add-btn {
+    position: absolute;
+    top: -5px;
+    right: 2px;
+  }
+}
+
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+  .student-profiles-wrapper {
+    margin-top: 150px;
+  }
+}
+
+
+
