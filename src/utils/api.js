@@ -13,7 +13,6 @@ const getStudentProfiles = async () => {
     return {
       ...student,
       tags: [],
-      tagString: '',
       average: average
     };
   });
@@ -22,4 +21,3 @@ const getStudentProfiles = async () => {
 
 
 export default getStudentProfiles;
-
